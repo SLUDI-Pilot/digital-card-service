@@ -18,7 +18,7 @@ ARG active_profile
 # can be passed during Docker build as build time environment for config server URL
 ARG spring_config_url
 
-# can be passed during Docker build as build time environment for glowroot 
+# can be passed during Docker build as build time environment for glowroot
 ARG is_glowroot
 
 # can be passed during Docker build as build time environment for artifactory URL
@@ -77,10 +77,10 @@ VOLUME ${work_dir}/logs ${work_dir}/Glowroot
 COPY ./target/digital-card-service-*.jar digital-card-service.jar
 
 # change permissions of file inside working dir
-RUN chown -R ${container_user}:${container_user} /home/${container_user}
+#RUN chown -R ${container_user}:${container_user} /home/${container_user}
 
 # select container user for all tasks
-USER ${container_user_uid}:${container_user_gid}
+#USER ${container_user_uid}:${container_user_gid}
 
 EXPOSE 8099
 
