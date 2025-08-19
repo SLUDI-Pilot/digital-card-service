@@ -263,10 +263,8 @@ public class PDFCardServiceImpl implements CardGeneratorService {
 		byte[] pdfSignatured=null;
 		ByteArrayOutputStream out = null;
 		try {
-			out = (ByteArrayOutputStream) pdfGenerator.generate(in);
-			logger.debug("Signature required - "+isSignatureRequired);
+			out = (ByteArrayOutputStream) pdfGenerator.generate(in);			
 			if(isSignatureRequired) {
-			logger.debug("Signature required inside true - "+isSignatureRequired);
 			PDFSignatureRequestDto request = new PDFSignatureRequestDto(lowerLeftX, lowerLeftY, upperRightX,
 					upperRightY, reason, 1, password);
 			request.setApplicationId("KERNEL");
@@ -297,7 +295,6 @@ public class PDFCardServiceImpl implements CardGeneratorService {
 
 			pdfSignatured = Base64.decodeBase64(signatureResponseDto.getData());
 			} else {
-				logger.debug("Signature required inside false - "+isSignatureRequired);
 				pdfSignatured = out.toByteArray();
 			}
 
